@@ -68,8 +68,6 @@
 #define GOOGLE_PROTOBUF_OS_APPLE
 #elif defined(__native_client__)
 #define GOOGLE_PROTOBUF_OS_NACL
-#elif defined(ANDROID) && defined(GOOGLE_PROTOBUF_ARCH_64_BIT)
-#define GOOGLE_PROTOBUF_OS_ANDROID
 #endif
 
 #endif  // GOOGLE_PROTOBUF_PLATFORM_MACROS_H_

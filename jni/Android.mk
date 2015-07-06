@@ -6,7 +6,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE    := libprotobuf-lite
-LOCAL_CPPFLAGS  += -std=c++11 -Os
+LOCAL_CPPFLAGS  += -std=c++11
 
 LOCAL_SRC_FILES := \
 			coded_stream.cc                \
@@ -20,8 +20,11 @@ LOCAL_SRC_FILES := \
 			zero_copy_stream.cc            \
 			zero_copy_stream_impl_lite.cc  \
 
+ifneq ($(TARGET_ARCH),arm)
 ifeq ($(TARGET_ARCH_ABI),x86)
-LOCAL_SRC_FILES +=	atomicops_internals_x86_gcc.cc 
+LOCAL_SRC_FILES +=	atomicops_internals_x86_gcc.cc
+endif
+LOCAL_CFLAGS    += -Os
 endif
 
 include $(BUILD_STATIC_LIBRARY)

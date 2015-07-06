@@ -171,7 +171,8 @@ GOOGLE_PROTOBUF_ATOMICOPS_ERROR
 // Apple.
 #elif defined(GOOGLE_PROTOBUF_OS_APPLE)
 #include <google/protobuf/stubs/atomicops_internals_macosx.h>
-
+#elif defined(__aarch64__)
+#include <google/protobuf/stubs/atomicops_internals_arm64_gcc.h>
 // GCC.
 #elif defined(__GNUC__)
 #if defined(GOOGLE_PROTOBUF_ARCH_IA32) || defined(GOOGLE_PROTOBUF_ARCH_X64)
@@ -195,7 +196,7 @@ GOOGLE_PROTOBUF_ATOMICOPS_ERROR
 
 // On some platforms we need additional declarations to make AtomicWord
 // compatible with our other Atomic* types.
-#if defined(GOOGLE_PROTOBUF_OS_APPLE) || defined(GOOGLE_PROTOBUF_OS_ANDROID)
+#if defined(GOOGLE_PROTOBUF_OS_APPLE)
 #include <google/protobuf/stubs/atomicops_internals_atomicword_compat.h>
 #endif
 
